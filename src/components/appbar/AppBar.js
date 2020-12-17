@@ -167,7 +167,7 @@ export default function AppBarComponent() {
         <Toolbar>
           <A href="/" base>
             <Typography className={classes.title} variant="h6" noWrap>
-              Bui&apos;s Boilerplate
+              Infocimahi Template
             </Typography>
           </A>
 

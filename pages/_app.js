@@ -5,6 +5,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "~/theme";
 import PageTransition from "../src/components/transition/PageTransition";
+import { WindowSizeProvider } from "~/context/WindowSizeContext";
 
 export default function MyApp(props) {
   const { Component, pageProps, router } = props;
@@ -25,13 +26,20 @@ export default function MyApp(props) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
+          rel="stylesheet"
+          crossOrigin="anonymous"
+        />
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <PageTransition>
-          <Component {...pageProps} key={router.route} />
-        </PageTransition>
+        <WindowSizeProvider>
+          <PageTransition>
+            <Component {...pageProps} key={router.route} />
+          </PageTransition>
+        </WindowSizeProvider>
       </ThemeProvider>
     </React.Fragment>
   );

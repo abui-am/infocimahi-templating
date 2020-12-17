@@ -12,6 +12,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(5),
   },
   wrapper: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
     width: "100%",
     maxWidth: 1064,
   },
