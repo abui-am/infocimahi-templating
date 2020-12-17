@@ -134,7 +134,7 @@ const InfocimahiTemplate = () => {
               width: scaleWithOriginal(1322, 1500, width),
               height: scaleWithOriginal(294, 1500, width),
               top: scaleWithOriginal(995, 1500, width),
-              lineHeight: scaleWithOriginal(97.7, 1500, width) + "px",
+              lineHeight: scaleWithOriginal(102, 1500, width) + "px",
             }}
           >
             <Highlighter
