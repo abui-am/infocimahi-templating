@@ -143,16 +143,8 @@ const InfocimahiTemplate = () => {
               // autoEscape={true}
               highlightStyle={{
                 display: "inline-block",
-                paddingRight: `${scaleWithOriginal(
-                  10,
-                  1500,
-                  width
-                )}px ${scaleWithOriginal(17, 1500, width)}px`,
-                paddingLeft: `${scaleWithOriginal(
-                  10,
-                  1500,
-                  width
-                )}px ${scaleWithOriginal(17, 1500, width)}px`,
+                paddingRight: `${scaleWithOriginal(18, 1500, width)}px`,
+                paddingLeft: `${scaleWithOriginal(18, 1500, width)}px`,
                 backgroundColor: "#ffde17",
                 color: "#231f20",
                 borderRadius: scaleWithOriginal(32, 1500, width),
