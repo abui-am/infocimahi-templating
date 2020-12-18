@@ -68,6 +68,7 @@ const InfocimahiTemplate = () => {
     sourceText,
     select,
     currWidth: width,
+    file,
   } = useInfocimahiStore();
   const { setCurrWidth } = useInfocimahiAction();
 
@@ -96,7 +97,11 @@ const InfocimahiTemplate = () => {
     >
       <div className={classes.imageDiv} ref={imageDiv}>
         <div className={classes.imageDivContent}>
-          <img className={classes.image} alt="imageEx" src="ex.jpg" />
+          <img
+            className={classes.image}
+            alt="imageEx"
+            src={file?.imagePath || "ex.jpg"}
+          />
           {useMemo(
             () => (
               <InfocimahiGradient />
