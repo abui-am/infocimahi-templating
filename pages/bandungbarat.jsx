@@ -1,16 +1,15 @@
 import React from "react";
 import BasicContainer from "~/components/layouts/BasicContainer";
 import BasicLayout from "~/components/layouts/BasicLayout";
-import FormComponent from "~/wrappers/form/Form";
-
-const FormIndex = () => {
+import BandungBarat from "~/template/bandungbarat/BandungBarat";
+const BandungBaratIndex = () => {
   return (
     <BasicLayout>
       <BasicContainer>
-        <FormComponent />
+        <BandungBarat />
       </BasicContainer>
     </BasicLayout>
   );
 };
 
-export default FormIndex;
+export default BandungBaratIndex;

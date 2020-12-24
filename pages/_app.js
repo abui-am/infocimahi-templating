@@ -6,7 +6,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "~/theme";
 import PageTransition from "../src/components/transition/PageTransition";
 import { WindowSizeProvider } from "~/context/WindowSizeContext";
-
+import { ResponsiveProvider } from "~/context/ResponsiveContext";
+import "../public/font/style.css";
 export default function MyApp(props) {
   const { Component, pageProps, router } = props;
 
@@ -36,9 +37,11 @@ export default function MyApp(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <WindowSizeProvider>
-          <PageTransition>
-            <Component {...pageProps} key={router.route} />
-          </PageTransition>
+          <ResponsiveProvider>
+            <PageTransition>
+              <Component {...pageProps} key={router.route} />
+            </PageTransition>
+          </ResponsiveProvider>
         </WindowSizeProvider>
       </ThemeProvider>
     </React.Fragment>

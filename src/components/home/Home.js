@@ -5,9 +5,12 @@ const Home = () => {
   return (
     <div>
       <h1>Template: </h1>
-      <div>
+      <div style={{ color: "#2a95a0" }}>
         <A href="/infocimahi">
-          <h2>infocimahi</h2>
+          <h1>infocimahi</h1>
+        </A>
+        <A href="/bandungbarat">
+          <h1>Bandung Barat Today</h1>
         </A>
       </div>
     </div>
