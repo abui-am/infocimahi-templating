@@ -4,14 +4,11 @@ export const BandungBaratState = createContext();
 export const BandungBaratDispatch = createContext();
 
 export const SET_STATE = "setState";
-export const SET_REF = "setRef";
 
 const initReducer = (state, action) => {
   switch (action.type) {
     case SET_STATE:
       return { ...state, [action.payload.name]: action.payload.value };
-    case SET_REF:
-      return { ...state, ref: action.payload };
 
     default:
       throw new Error("Unexpected action");
@@ -23,7 +20,6 @@ const BandungBaratProvider = ({ children }) => {
     title: "",
     source: "",
     highlight: "",
-    ref: {},
   };
 
   const [state, dispatch] = useReducer(initReducer, initValue);

@@ -6,6 +6,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import React from "react";
+import { useResponsiveAction } from "~/context/ResponsiveContext";
 import useSave from "~/hooks/useSave";
 import { SET_STATE, useBandungBarat } from "../context/Context";
 
@@ -20,7 +21,8 @@ const useStyles = makeStyles({
 });
 
 const Form = () => {
-  const [{ ref, title, source, highlight }, dispatch] = useBandungBarat();
+  const [{ title, source, highlight }, dispatch] = useBandungBarat();
+  const { register } = useResponsiveAction();
   const { save, onInputFile } = useSave("bbrt");
   const classes = useStyles();
 
@@ -81,7 +83,7 @@ const Form = () => {
       />
       <Button
         fullWidth
-        onClick={() => save(ref)}
+        onClick={() => save(register)}
         variant="contained"
         color="primary"
       >

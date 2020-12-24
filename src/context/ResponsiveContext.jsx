@@ -4,7 +4,6 @@ import {
   useEffect,
   useReducer,
   useRef,
-  useState,
 } from "react";
 import scaleWithOriginal from "~/utils/calculation";
 export const SET_WIDTH = "SET_WIDTH";
@@ -27,21 +26,24 @@ const responsiveReducer = (state, action) => {
 
 const ResponsiveProvider = ({ children }) => {
   const [state, dispatch] = useReducer(responsiveReducer, initState);
-  const [width, setWidth] = useState();
   const register = useRef();
 
   useEffect(() => {
-    return setWidth(register?.current?.clientWidth);
-  }, [register]);
+    console.log("ref", register);
+    return dispatch({
+      type: SET_WIDTH,
+      payload: register?.current?.clientWidth,
+    });
+  }, [register.current]);
 
-  const scale = (value, width) => {
-    return scaleWithOriginal(value, 1500, width);
+  const scale = (value) => {
+    console.log("width", state);
+    return scaleWithOriginal(value, 1500, state.width);
   };
 
   const actionValue = {
     scale,
     register,
-    width,
   };
 
   return (

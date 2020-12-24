@@ -92,9 +92,7 @@ const Template = () => {
     if (sourceTextRef.current)
       setSourceTextWidth(sourceTextRef.current.clientWidth);
   });
-  useEffect(() => {
-    dispatch({ type: "setRef", payload: register });
-  }, [register]);
+
   return (
     <div className={classes.base}>
       <div className={classes.root}>
@@ -128,7 +126,7 @@ const Template = () => {
                 sumber : {source}
               </span>
             ),
-            [sourceTextWidth]
+            [source, sourceTextWidth]
           )}
           <div
             className={classes.text}
