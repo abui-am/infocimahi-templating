@@ -1,7 +1,11 @@
 import { makeStyles } from "@material-ui/core";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
-import { useResponsiveAction } from "~/context/ResponsiveContext";
+import {
+  useResponsiveAction,
+  useResponsiveDispatch,
+  SET_WIDTH,
+} from "~/context/ResponsiveContext";
 import { useBandungBarat } from "../context/Context";
 const useStyles = makeStyles({
   base: {
@@ -84,41 +88,47 @@ const useStyles = makeStyles({
 
 const Template = () => {
   const classes = useStyles();
-  const { register, scale, width } = useResponsiveAction();
-  const [{ title, source, highlight, file }, dispatch] = useBandungBarat();
+  const { register, scale } = useResponsiveAction();
+  const dispatch = useResponsiveDispatch();
+  const [{ title, source, highlight, file }] = useBandungBarat();
   const [sourceTextWidth, setSourceTextWidth] = useState();
   const sourceTextRef = useRef();
   useEffect(() => {
     if (sourceTextRef.current)
       setSourceTextWidth(sourceTextRef.current.clientWidth);
   });
-
+  useEffect(() => {
+    dispatch({
+      type: SET_WIDTH,
+      payload: register?.current?.clientWidth,
+    });
+  }, [register.current]);
   return (
     <div className={classes.base}>
       <div className={classes.root}>
         <div className={classes.gradient} ref={register}>
           <img
             src="/bandungbarat/bandungbarat.png"
-            style={{ height: scale(168, width) }}
+            style={{ height: scale(168) }}
             className={classes.bbimage}
           />
 
           <HashTag
             style={{
-              fontSize: scale(32.7036, width),
-              lineHeight: `${scale(41, width)}px`,
+              fontSize: scale(32.7036),
+              lineHeight: `${scale(41)}px`,
             }}
           />
-          <Identity style={{ height: scale(41, width) }} />
+          <Identity style={{ height: scale(41) }} />
           {useMemo(
             () => (
               <span
                 className={classes.sourceText}
                 style={{
                   whiteSpace: "nowrap",
-                  fontSize: scale(25, width),
+                  fontSize: scale(25),
                   zIndex: 10,
-                  bottom: scale(568, width) + sourceTextWidth,
+                  bottom: scale(568) + sourceTextWidth,
                   fontFamily: "Geometria",
                 }}
                 ref={sourceTextRef}
@@ -131,7 +141,7 @@ const Template = () => {
           <div
             className={classes.text}
             style={{
-              width: scale(1269, width),
+              width: scale(1269),
             }}
           >
             {useMemo(
@@ -141,19 +151,19 @@ const Template = () => {
                   searchWords={[highlight]}
                   // autoEscape={true}
                   highlightStyle={{
-                    fontSize: scale(86.492, width),
-                    lineHeight: `${scale(110, width)}px`,
-                    padding: `0px ${scale(16, width)}px`,
+                    fontSize: scale(86.492),
+                    lineHeight: `${scale(110)}px`,
+                    padding: `0px ${scale(16)}px`,
                     display: "inline-block",
                     backgroundColor: "#ffde17",
-                    marginTop: `-${scale(5, width)}`,
+                    marginTop: `-${scale(5)}`,
                     color: "#231f20",
                     marginBlockStart: 0,
                   }}
                   textToHighlight={`${title}`}
                   unhighlightStyle={{
-                    fontSize: scale(86.492, width),
-                    lineHeight: `${scale(109, width)}px`,
+                    fontSize: scale(86.492),
+                    lineHeight: `${scale(109)}px`,
                     display: "inline-block",
                   }}
                 />

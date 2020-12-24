@@ -28,14 +28,6 @@ const ResponsiveProvider = ({ children }) => {
   const [state, dispatch] = useReducer(responsiveReducer, initState);
   const register = useRef();
 
-  useEffect(() => {
-    console.log("ref", register);
-    return dispatch({
-      type: SET_WIDTH,
-      payload: register?.current?.clientWidth,
-    });
-  }, [register.current]);
-
   const scale = (value) => {
     console.log("width", state);
     return scaleWithOriginal(value, 1500, state.width);
